@@ -13,7 +13,7 @@ import com.example.androidprojecttr38.ui.theme.AccentColor
 fun OnboardHeader(text: String, modifier: Modifier = Modifier, color: Color = AccentColor
 ) {
     Text(
-        text = "Заголовок",
+        text = text,
         modifier = modifier
     )
 }
@@ -21,7 +21,7 @@ fun OnboardHeader(text: String, modifier: Modifier = Modifier, color: Color = Ac
 @Composable
 fun OnboardDescription(text: String,modifier: Modifier = Modifier) {
     Text(
-        text = "Описание",
+        text = text,
         modifier = modifier
     )
 }
@@ -30,20 +30,19 @@ fun OnboardDescription(text: String,modifier: Modifier = Modifier) {
 fun TextButtonClick(onClick: () -> Unit, text: String,  modifier: Modifier = Modifier) {
 TextButton( onClick = {},
     colors = ButtonDefaults.textButtonColors()) {
-    Text( text = "Текст, на который можно нажать")
-}
+    Text( text = text) }
 }
 
 @Preview(showBackground = true)
 @Composable
 private fun OnboardHeaderPreview() {
-    OnboardHeader("Hello")
+    OnboardHeader("Заголовок")
 }
 
 @Preview
 @Composable
 private fun OnboardDescriptionPreview() {
-    OnboardDescription("")
+    OnboardDescription("Описание")
 }
 
 @Preview

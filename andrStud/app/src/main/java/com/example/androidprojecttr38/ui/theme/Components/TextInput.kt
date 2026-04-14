@@ -7,19 +7,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun TextInputField(
+fun TextInputField( txtinput: String,
                        modifier: Modifier = Modifier) {
     OutlinedTextField(
         modifier = modifier,
         value = "",
         onValueChange = { },
-        placeholder = { Text(text = "Подсказка") },
-        label = { Text(text = "Текст") }
+        label = { Text(text = txtinput) }
     )
 }
 
 @Preview
 @Composable
 private fun TextInputFieldPreview() {
-    TextInputField()
+    TextInputField("Ввод")
 }

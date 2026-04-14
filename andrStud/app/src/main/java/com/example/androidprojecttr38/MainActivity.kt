@@ -1,47 +1,43 @@
-package com.example.androidprojecttr38.ui.theme.Components
+package com.example.androidprojecttr38
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.androidprojecttr38.ui.theme.AndroidProjectTr38Theme
+import com.example.androidprojecttr38.ui.theme.MyCustomTheme
+import com.example.androidprojecttr38.ui.theme.screen.SignUp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            AndroidProjectTr38Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+            MyCustomTheme {
+                SignUp()
                 }
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+//@Composable
+//fun Greeting(name: String, modifier: Modifier = Modifier) {
+//    Text(
+//        text = "Hello $name!",
+//        modifier = modifier
+//    )
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun GreetingPreview() {
+//    SignUp()
+//}
 
-@Preview(showBackground = true)
+
+@Preview
 @Composable
-fun GreetingPreview() {
-    AndroidProjectTr38Theme {
-        Greeting("Android")
-    }
+private fun SignUpPrev() {
+    SignUp()
 }

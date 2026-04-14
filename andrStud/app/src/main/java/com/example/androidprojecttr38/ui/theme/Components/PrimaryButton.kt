@@ -15,10 +15,14 @@ import com.example.androidprojecttr38.ui.theme.MainButtonInactive
 import com.example.androidprojecttr38.ui.theme.MainButtonActive_pr04
 
 @Composable
-fun PrimaryButton(modifier: Modifier = Modifier) {
+fun PrimaryButton(Mainbuttontext: String,
+                  modifier: Modifier = Modifier,
+                  enabled: Boolean = true,
+                  onClick: () -> Unit) {
     Button(
-        onClick  = {},
+        onClick  = onClick,
         modifier = Modifier,
+        enabled = enabled,
         colors = ButtonColors(
             containerColor = MainButtonActive_pr04,
             contentColor = Color.White,
@@ -26,14 +30,21 @@ fun PrimaryButton(modifier: Modifier = Modifier) {
             disabledContentColor= Color.White
         )
     ) {
-        Text(text = "Кнопка")
+        Text(text = Mainbuttontext)
     }
 }
 
 @Composable
-fun SecondaryButton(modifier: Modifier = Modifier) {
+fun SecondaryButton(
+    SecondButton: String,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    onClick: () -> Unit
+) {
     OutlinedButton(
-        onClick  = {},
+        onClick  = onClick,
+        modifier = Modifier,
+        enabled = enabled,
         colors = ButtonColors(
             containerColor = Color.White,
             contentColor = MainButtonActive_pr04,
@@ -45,7 +56,7 @@ fun SecondaryButton(modifier: Modifier = Modifier) {
 
     ) {
         Text(
-            text = "Кнопка1",
+            text = SecondButton,
             color = MainButtonActive_pr04
         )
     }
@@ -54,11 +65,11 @@ fun SecondaryButton(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun PrimaryButtonPreview() {
-    PrimaryButton()
+    PrimaryButton("Кнопка", onClick = {}, enabled = true)
 }
 
 @Preview
 @Composable
 private fun SecondaryButtonPreview() {
-    SecondaryButton()
+    SecondaryButton("Кнопка1", onClick = {}, enabled = true)
 }

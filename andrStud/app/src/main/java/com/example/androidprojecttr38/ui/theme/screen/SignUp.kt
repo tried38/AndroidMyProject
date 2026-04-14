@@ -1,5 +1,6 @@
 package com.example.androidprojecttr38.ui.theme.screen
 
+import android.util.Log
 import android.widget.Button
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -20,6 +22,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,8 +32,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androidprojecttr38.ui.theme.MainButtonActive_pr05
+import  androidx.compose.runtime.getValue
+import  androidx.compose.runtime.setValue
 
-
+// убрать .width(335.dp)
+//                .height(91.dp),
+// .padding(20.dp)
+// все в один Column
 @Composable
 fun SignUp(modifier: Modifier = Modifier) {
     Box(
@@ -61,7 +70,8 @@ fun SignUp(modifier: Modifier = Modifier) {
             )
             Text(
                 modifier = modifier
-                    .align(Alignment.Start),
+                    .align(Alignment.Start)
+                    .padding(20.dp),
                 text = "Войдите чтобы пользоваться функциями приложения",
             )
         }
@@ -78,15 +88,18 @@ fun SignUp(modifier: Modifier = Modifier) {
             )
             Text(
                 modifier = modifier
+                    .padding(20.dp)
                     .height(14.dp)
-                    .align(Alignment.Start),
+                    .align(Alignment.Start)
+                    ,
                 text = "Вход по E-mail",
                 color = Color.Gray
             )
 
+            var email by remember{ mutableStateOf("") }
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = email,
+                onValueChange = {email = it},
                 label = { Text("user@example.com") },
                 modifier = Modifier
                     .width(340.dp)
@@ -99,8 +112,10 @@ fun SignUp(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(24.dp))
 
             OutlinedButton(
-                onClick  = {},
-                enabled = false,
+                onClick  = {
+                    Log.d("SignUp",email)
+                },
+                enabled = true,
                 modifier = modifier
                     .width(340.dp)
                     .height(54.dp),
