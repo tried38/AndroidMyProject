@@ -36,7 +36,7 @@ import  androidx.compose.runtime.getValue
 import  androidx.compose.runtime.setValue
 
 // убрать .width(335.dp)
-//                .height(91.dp),
+//.height(91.dp),
 // .padding(20.dp)
 // все в один Column
 @Composable
