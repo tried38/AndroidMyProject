@@ -1,5 +1,7 @@
 package com.example.androidprojecttr38.ui.theme
 
+import android.widget.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
@@ -65,3 +67,5 @@ val LocalAppColors = staticCompositionLocalOf {
 
     )
 }
+
+s
