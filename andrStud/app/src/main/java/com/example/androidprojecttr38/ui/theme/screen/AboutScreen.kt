@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.motionEventSpy
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,7 +32,13 @@ import com.example.androidprojecttr38.R
 
 
 @Composable
-fun AboutScr(modifier: Modifier = Modifier) {
+fun AboutScr(modifier: Modifier = Modifier,
+             TextButtonNext: String,
+             HeadText: String,
+             AboutText: String,
+             PlusImage: Int,
+             StepImage: Int,
+             IllustrationImage: Int,) {
     Box(
         modifier = Modifier
             .background(color = Color.White),
@@ -54,11 +61,11 @@ fun AboutScr(modifier: Modifier = Modifier) {
                     disabledContentColor = Color.Blue
                 )
             ) {
-                Text(text = "Далее")
+                Text(text = TextButtonNext)
             }
 
             Image(
-                painter = painterResource(id = R.drawable.plus),
+                painter = painterResource(id = PlusImage),
                 contentDescription = "ButtonPlus",
                 modifier = Modifier
             )
@@ -67,47 +74,53 @@ fun AboutScr(modifier: Modifier = Modifier) {
 
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .width(375.dp)
-                .height(91.dp),
+                .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier
                 .height(273.dp))
             Text(
-                text = "Анализы",
+                text = HeadText,
                 modifier = Modifier,
                 color = Color.Green
             )
             Spacer(modifier = Modifier
                 .height(29.dp))
             Text(
-                text = "Экспресс сбор и получение проб",
+                text = AboutText,
                 modifier = Modifier,
                 color = Color.Gray
             )
+        }
+
+        Column(modifier = Modifier
+            .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally) {
             Spacer(modifier = Modifier
-                .height(60.dp))
+                .height(406.dp))
             Image(
-                painter = painterResource(id = R.drawable.first1),
+                painter = painterResource(id = StepImage),
                 contentDescription = "",
                 modifier = Modifier
             )
             Spacer(modifier = Modifier
                 .height(105.dp))
             Image(
-                painter = painterResource(id = R.drawable.illustration),
+                painter = painterResource(id = IllustrationImage),
                 contentDescription = "",
                 modifier = Modifier
-                        //.size(width = 366.dp, height = 217.dp) //doc 1
-                        //.size(width = 359.dp, height = 269.dp) //doc 2
+                //.size(width = 366.dp, height = 217.dp) //doc 1
+                //.size(width = 359.dp, height = 269.dp) //doc 2
             )
         }
+
     }
 }
 
 @Preview
 @Composable
 private fun AboutScrPrev() {
-    AboutScr()
+    AboutScr(modifier = Modifier, TextButtonNext = "Далее", HeadText = "Анализы", AboutText = "Эксперсс сбор и получение проб", PlusImage = R.drawable.plus, StepImage = R.drawable.first1, IllustrationImage = R.drawable.illustration)
+//  AboutScr(modifier = Modifier, TextButtonNext = "Далее", HeadText = "Уведомления", AboutText = "Вы быстро узнаете о результатах", PlusImage = R.drawable.plus, StepImage = R.drawable.group_2__1_, IllustrationImage = R.drawable.doc1)
+//AboutScr(modifier = Modifier, TextButtonNext = "Далее", HeadText = "Мониторинг", AboutText = "Наши врачи наблюдают за вашими показателями здоровья", PlusImage = R.drawable.plus, StepImage = R.drawable.first1, IllustrationImage = R.drawable.doc2)
 }

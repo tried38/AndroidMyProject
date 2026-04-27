@@ -34,10 +34,12 @@ import androidx.compose.ui.unit.sp
 import com.example.androidprojecttr38.ui.theme.MainButtonActive_pr05
 import  androidx.compose.runtime.getValue
 import  androidx.compose.runtime.setValue
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun SignUp(
     modifier: Modifier = Modifier,
+    navController: androidx.navigation.NavHostController,
     welcomeText: String,
     descriptionText: String,
     emailLabelText: String,
@@ -108,7 +110,7 @@ fun SignUp(
                 onClick = {
                     Log.d("SignUp", email)
                 },
-                enabled = true,
+                enabled = email.isNotEmpty(),
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonColors(
                     containerColor = MainButtonActive_pr05,
@@ -164,6 +166,7 @@ fun SignUp(
 @Preview
 @Composable
 private fun SignUpPreview() {
+    val navController = rememberNavController()
     SignUp(
         welcomeText = "Добро пожаловать!",
         descriptionText = "Войдите, чтобы пользоваться функциями приложения",
@@ -171,6 +174,7 @@ private fun SignUpPreview() {
         emailPlaceholderText = "example@mail.ru",
         nextButtonText = "Далее",
         orText = "Или войдите с помощью",
-        yandexButtonText = "Войти с Яндекс"
+        yandexButtonText = "Войти с Яндекс",
+        navController =navController
     )
 }
