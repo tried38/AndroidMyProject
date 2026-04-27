@@ -35,75 +35,68 @@ import com.example.androidprojecttr38.ui.theme.MainButtonActive_pr05
 import  androidx.compose.runtime.getValue
 import  androidx.compose.runtime.setValue
 
-// убрать .width(335.dp)
-//.height(91.dp),
-// .padding(20.dp)
-// все в один Column
 @Composable
-fun SignUp(modifier: Modifier = Modifier) {
-    Box(
-        modifier = Modifier
-            .background(color = Color.White),
-        contentAlignment = Alignment.TopCenter
+fun SignUp(
+    modifier: Modifier = Modifier,
+    welcomeText: String,
+    descriptionText: String,
+    emailLabelText: String,
+    emailPlaceholderText: String,
+    nextButtonText: String,
+    orText: String,
+    yandexButtonText: String
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(color = Color.White)
+            .padding(20.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // === ВЕРХНЯЯ ЧАСТЬ ===
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .width(335.dp)
-                .height(91.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Spacer(modifier = Modifier.height(59.dp))
 
-            Spacer(
-                modifier = Modifier
-                    .height(59.dp)
-            )
             Text(
-                text = "Добро пожаловать!",
+                text = welcomeText,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                lineHeight = 28.sp
-            )
-            Spacer(
+                lineHeight = 28.sp,
                 modifier = Modifier
-                    .height(24.dp)
-            )
-            Text(
-                modifier = modifier
-                    .align(Alignment.Start)
-                    .padding(20.dp),
-                text = "Войдите чтобы пользоваться функциями приложения",
-            )
-        }
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .width(335.dp)
-                .height(91.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Spacer(
-                modifier = Modifier
-                    .height(262.dp)
-            )
-            Text(
-                modifier = modifier
-                    .padding(20.dp)
-                    .height(14.dp)
-                    .align(Alignment.Start)
-                    ,
-                text = "Вход по E-mail",
-                color = Color.Gray
             )
 
-            var email by remember{ mutableStateOf("") }
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Text(
+                text = descriptionText,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+
+        // === СРЕДНЯЯ ЧАСТЬ ===
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Spacer(modifier = Modifier.height(100.dp))
+
+            Text(
+                text = emailLabelText,
+                color = Color.Gray,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+//            Spacer(modifier = Modifier.height(8.dp))
+
+            var email by remember { mutableStateOf("") }
             OutlinedTextField(
                 value = email,
-                onValueChange = {email = it},
-                label = { Text("user@example.com") },
-                modifier = Modifier
-                    .width(340.dp)
-                    .height(58.dp),
+                onValueChange = { email = it },
+                label = { Text(emailPlaceholderText) },
+                modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp),
                 singleLine = true,
                 enabled = true
@@ -112,55 +105,46 @@ fun SignUp(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(24.dp))
 
             OutlinedButton(
-                onClick  = {
-                    Log.d("SignUp",email)
+                onClick = {
+                    Log.d("SignUp", email)
                 },
                 enabled = true,
-                modifier = modifier
-                    .width(340.dp)
-                    .height(54.dp),
+                modifier = Modifier.fillMaxWidth(),
                 colors = ButtonColors(
                     containerColor = MainButtonActive_pr05,
                     contentColor = Color.White,
-                    disabledContainerColor= MainButtonActive_pr05,
-                    disabledContentColor= Color.White
+                    disabledContainerColor = MainButtonActive_pr05,
+                    disabledContentColor = Color.White
                 ),
                 border = BorderStroke(1.dp, MainButtonActive_pr05),
                 shape = RoundedCornerShape(15)
-
             ) {
                 Text(
-
-                    text = "Далее",
+                    text = nextButtonText,
                     color = Color.White
                 )
             }
         }
 
+        // === ОТСТУП МЕЖДУ СРЕДНЕЙ И НИЖНЕЙ ЧАСТЬЮ ===
+        Spacer(modifier = Modifier.height(274.dp))
+
+        // === НИЖНЯЯ ЧАСТЬ ===
         Column(
-            modifier = modifier
-                .width(335.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(
-                modifier.height(660.dp)
-            )
-
             Text(
-                text = "Или войдите с помощью",
+                text = orText,
                 fontSize = 15.sp,
                 color = Color.Gray
             )
 
-            Spacer(
-                modifier.height(16.dp)
-            )
+            Spacer(modifier = Modifier.height(16.dp))
 
             OutlinedButton(
                 onClick = { },
-                modifier = Modifier
-                    .width(340.dp)
-                    .height(60.dp),
+                modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp),
                 colors = ButtonDefaults.outlinedButtonColors(
                     containerColor = Color.White,
@@ -169,7 +153,7 @@ fun SignUp(modifier: Modifier = Modifier) {
                 border = BorderStroke(1.5.dp, MainButtonActive_pr05)
             ) {
                 Text(
-                    text = "Войти с Яндекс",
+                    text = yandexButtonText,
                     fontSize = 15.sp,
                 )
             }
@@ -177,9 +161,16 @@ fun SignUp(modifier: Modifier = Modifier) {
     }
 }
 
-
 @Preview
 @Composable
 private fun SignUpPreview() {
-    SignUp()
+    SignUp(
+        welcomeText = "Добро пожаловать!",
+        descriptionText = "Войдите, чтобы пользоваться функциями приложения",
+        emailLabelText = "Вход по E-mail",
+        emailPlaceholderText = "example@mail.ru",
+        nextButtonText = "Далее",
+        orText = "Или войдите с помощью",
+        yandexButtonText = "Войти с Яндекс"
+    )
 }

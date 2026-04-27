@@ -15,7 +15,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyCustomTheme {
-                SignUp()
+                SignUp(        welcomeText = "Добро пожаловать!",
+                    descriptionText = "Войдите, чтобы пользоваться функциями приложения",
+                    emailLabelText = "Вход по E-mail",
+                    emailPlaceholderText = "example@mail.ru",
+                    nextButtonText = "Далее",
+                    orText = "Или войдите с помощью",
+                    yandexButtonText = "Войти с Яндекс")
                 }
             }
         }
@@ -39,5 +45,11 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 private fun SignUpPrev() {
-    SignUp()
+    SignUp(        welcomeText = "Добро пожаловать!",
+        descriptionText = "Войдите, чтобы пользоваться функциями приложения",
+        emailLabelText = "Вход по E-mail",
+        emailPlaceholderText = "example@mail.ru",
+        nextButtonText = "Далее",
+        orText = "Или войдите с помощью",
+        yandexButtonText = "Войти с Яндекс")
 }

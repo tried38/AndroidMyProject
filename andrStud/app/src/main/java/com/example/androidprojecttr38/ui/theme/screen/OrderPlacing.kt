@@ -68,7 +68,7 @@ fun OrderPlacing(modifier: Modifier = Modifier) {
             OutlinedTextField(
                 value = address,
                 onValueChange = { address = it },
-                label = {},
+                label = {Text("Введите ваш адрес")},
                 placeholder = {
                     Text("Введите ваш адрес")
                 },
@@ -85,7 +85,7 @@ fun OrderPlacing(modifier: Modifier = Modifier) {
             OutlinedTextField(
                 value = telephone,
                 onValueChange = { telephone = it },
-                label = { },
+                label = { Text("Введите ваш номер телефона")},
                 placeholder = {
                     Text("Введите ваш номер телефона")
                 },
@@ -99,12 +99,13 @@ fun OrderPlacing(modifier: Modifier = Modifier) {
 
 
             Spacer(modifier = Modifier.height(12.dp))
+            Text(text = "Коментарий", color = Color.Gray)
             var coment by remember { mutableStateOf("") }
 
             OutlinedTextField(
                 value = coment,
                 onValueChange = { coment = it },
-                label = { Text(text = "Коментарий", color = Color.Gray) },
+                label = { Text(text = "Можете оставить свои пожелания", color = Color.Gray) },
                 placeholder = {
                     Text("Можете оставить свои пожелания")
                 },
