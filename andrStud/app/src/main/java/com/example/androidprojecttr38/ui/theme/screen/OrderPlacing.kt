@@ -1,19 +1,25 @@
 package com.example.androidprojecttr38.ui.theme.screen
 
+import android.R.attr.fontWeight
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -27,14 +33,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.androidprojecttr38.R
 import com.example.androidprojecttr38.ui.theme.ButtonBackColor
+import com.example.androidprojecttr38.ui.theme.MainButtonActive_pr05
+import kotlin.String
 
 @Composable
-fun OrderPlacing(modifier: Modifier = Modifier) {
+fun OrderPlacing(modifier: Modifier = Modifier,
+                 navController: androidx.navigation.NavHostController,
+OrderText: String,
+AdressText: String,
+PhoneText: String,
+PromocodeText: String,
+ComentText: String,
+CountAnaliz: String,
+CostAll: String,
+buttnTXT: String
+) {
     Box(modifier = Modifier
         .background(color = Color.White),
         contentAlignment = Alignment.Center) {
@@ -57,7 +77,7 @@ fun OrderPlacing(modifier: Modifier = Modifier) {
             }
 
             Spacer(modifier = Modifier.height(56.dp))
-            Text(   text = "Оформление заказа",
+            Text(   text = OrderText,
                     modifier = Modifier,
                     color = Color.Black,
                     fontSize = 24.sp)
@@ -68,7 +88,7 @@ fun OrderPlacing(modifier: Modifier = Modifier) {
             OutlinedTextField(
                 value = address,
                 onValueChange = { address = it },
-                label = {},
+                label = {Text(text = AdressText)},
                 placeholder = {
                     Text("Введите ваш адрес")
                 },
@@ -85,7 +105,7 @@ fun OrderPlacing(modifier: Modifier = Modifier) {
             OutlinedTextField(
                 value = telephone,
                 onValueChange = { telephone = it },
-                label = { },
+                label = { Text(text = PhoneText)},
                 placeholder = {
                     Text("Введите ваш номер телефона")
                 },
@@ -99,12 +119,22 @@ fun OrderPlacing(modifier: Modifier = Modifier) {
 
 
             Spacer(modifier = Modifier.height(12.dp))
+            Row(
+                modifier = modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) { Text(text = "Коментарий", color = Color.Gray)
+                Image(
+                    painter = painterResource(id = R.drawable.voice),
+                    contentDescription = "voice",
+                    Modifier.size(width = 24.dp, height = 20.dp)
+                )}
             var coment by remember { mutableStateOf("") }
 
             OutlinedTextField(
                 value = coment,
                 onValueChange = { coment = it },
-                label = { Text(text = "Коментарий", color = Color.Gray) },
+                label = { Text(text = ComentText, color = Color.Gray) },
                 placeholder = {
                     Text("Можете оставить свои пожелания")
                 },
@@ -115,6 +145,50 @@ fun OrderPlacing(modifier: Modifier = Modifier) {
                 singleLine = false,
                 enabled = true
             )
+            Spacer(Modifier.height(143.dp))
+            Row(
+                modifier = modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) { Text(text = PromocodeText, color = Color.Gray)
+                Image(
+                    painter = painterResource(id = R.drawable.next),
+                    contentDescription = "voice",
+                    Modifier.size(width = 24.dp, height = 20.dp)
+                )}
+            Spacer(Modifier.height(12.dp))
+            Divider()
+            Spacer(Modifier.height(12.dp))
+            Row(
+                modifier = modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) { Text(modifier = modifier, fontWeight = FontWeight(500),fontSize = 17.sp, text = CountAnaliz, color = Color.Black)
+                Text(modifier = modifier, fontWeight = FontWeight(500),fontSize = 17.sp,text = CostAll, color = Color.Black)}
+
+            Spacer(Modifier.height(12.dp))
+            //navController.navigate(OrderPaidScreen)
+            Button(
+               onClick = {  },
+                enabled = telephone.isNotEmpty() and address.isNotEmpty(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp),
+                shape = RoundedCornerShape(12.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MainButtonActive_pr05,
+                    contentColor = Color.White,
+                    disabledContainerColor = MainButtonActive_pr05,
+                    disabledContentColor = Color.White
+                )
+            ) {
+                Text(
+                    text = buttnTXT,
+                    fontSize = 17.sp,
+                    fontWeight = FontWeight(600)
+                )
+            }
+
         }
     }
 }
@@ -122,5 +196,17 @@ fun OrderPlacing(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun OrderPlacingPrev() {
-    OrderPlacing()
+    val navController = rememberNavController()
+    OrderPlacing(
+        modifier = Modifier,
+        OrderText = "Оформление заказа",
+        AdressText =  "Введите ваш адрес",
+        PhoneText =  "Введите ваш номер телефона",
+        PromocodeText =  "Промокод",
+        ComentText =  "Можете оставить свои пожелания",
+        CountAnaliz =  "1 анализ",
+        CostAll =  "690 рублей",
+        buttnTXT =  "Заказать",
+        navController = navController
+    )
 }
