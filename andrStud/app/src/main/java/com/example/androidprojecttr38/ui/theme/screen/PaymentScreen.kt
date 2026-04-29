@@ -125,7 +125,7 @@ fun PaymentScreen(  modifier: Modifier = Modifier,
         Button(
             onClick = { navController.navigate(SignUpScreen) },
             modifier = Modifier
-                .width(335.dp)
+                .fillMaxWidth()
                 .height(56.dp),
             shape = RoundedCornerShape(12.dp),
             colors = ButtonDefaults.buttonColors(

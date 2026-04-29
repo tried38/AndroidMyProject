@@ -108,10 +108,11 @@ fun SignUp(
 
             OutlinedButton(
                 onClick = {
+                    navController.navigate(OrderPlacingScreen)
                     Log.d("SignUp", email)
                 },
                 enabled = email.isNotEmpty(),
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().height(56.dp),
                 colors = ButtonColors(
                     containerColor = MainButtonActive_pr05,
                     contentColor = Color.White,

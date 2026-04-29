@@ -29,6 +29,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androidprojecttr38.R
+import com.example.androidprojecttr38.ui.theme.ColorNextColor
 
 
 @Composable
@@ -56,9 +57,9 @@ fun AboutScr(modifier: Modifier = Modifier,
                 onClick = {},
                 colors = ButtonColors(
                     containerColor = Color.White,
-                    contentColor = Color.Blue,
+                    contentColor = ColorNextColor,
                     disabledContainerColor = Color.White,
-                    disabledContentColor = Color.Blue
+                    disabledContentColor = ColorNextColor
                 )
             ) {
                 Text(text = TextButtonNext)
@@ -122,5 +123,5 @@ fun AboutScr(modifier: Modifier = Modifier,
 private fun AboutScrPrev() {
     AboutScr(modifier = Modifier, TextButtonNext = "Далее", HeadText = "Анализы", AboutText = "Эксперсс сбор и получение проб", PlusImage = R.drawable.plus, StepImage = R.drawable.first1, IllustrationImage = R.drawable.illustration)
 //  AboutScr(modifier = Modifier, TextButtonNext = "Далее", HeadText = "Уведомления", AboutText = "Вы быстро узнаете о результатах", PlusImage = R.drawable.plus, StepImage = R.drawable.group_2__1_, IllustrationImage = R.drawable.doc1)
-//AboutScr(modifier = Modifier, TextButtonNext = "Далее", HeadText = "Мониторинг", AboutText = "Наши врачи наблюдают за вашими показателями здоровья", PlusImage = R.drawable.plus, StepImage = R.drawable.first1, IllustrationImage = R.drawable.doc2)
+//  AboutScr(modifier = Modifier, TextButtonNext = "Далее", HeadText = "Мониторинг", AboutText = "Наши врачи наблюдают за вашими показателями здоровья", PlusImage = R.drawable.plus, StepImage = R.drawable.first1, IllustrationImage = R.drawable.doc2)
 }

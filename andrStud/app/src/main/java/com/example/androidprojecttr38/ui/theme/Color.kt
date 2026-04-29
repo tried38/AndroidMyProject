@@ -67,4 +67,6 @@ val LocalAppColors = staticCompositionLocalOf {
 
     )
 }
-val ButtonBackColor = Color.Gray
+
+val ColorNextColor = Color(0xFF57A9FF)
+val ButtonBackColor = Color(0xFFF5F5F9)

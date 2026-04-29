@@ -90,8 +90,8 @@ class MainActivity : ComponentActivity() {
                             FirstText = "Ваш заказ успешно оплачен!",
                             SecondText = "Вам осталось дождаться приезда медсестры и сдать анализы. \n" +
                                     "До скорой встречи!",
-                            PaymentTextButton = "check",
-                            OnMainPage = "Back",
+                            PaymentTextButton = "Чек покупки",
+                            OnMainPage = "На главную",
                             navController = navController,
                         ) }
                 }

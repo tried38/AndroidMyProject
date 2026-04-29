@@ -58,11 +58,10 @@ buttnTXT: String
     Box(modifier = Modifier
         .background(color = Color.White),
         contentAlignment = Alignment.Center) {
-        Spacer(modifier = Modifier
-            .height(60.dp))
+
         Column(modifier = Modifier
             .fillMaxSize()
-            .padding(20.dp)) {
+            .padding(start = 20.dp, top = 60.dp, end = 26.dp, bottom = 32.dp)) {
 
             OutlinedButton(onClick = {},
                 enabled = true,
@@ -93,7 +92,7 @@ buttnTXT: String
                     Text("Введите ваш адрес")
                 },
                 modifier = Modifier
-                    .width(340.dp)
+                    .fillMaxWidth()
                     .height(58.dp),
                 shape = RoundedCornerShape(12.dp),
                 singleLine = true,
@@ -110,7 +109,7 @@ buttnTXT: String
                     Text("Введите ваш номер телефона")
                 },
                 modifier = Modifier
-                    .width(340.dp)
+                    .fillMaxWidth()
                     .height(58.dp),
                 shape = RoundedCornerShape(12.dp),
                 singleLine = true,
@@ -139,13 +138,13 @@ buttnTXT: String
                     Text("Можете оставить свои пожелания")
                 },
                 modifier = Modifier
-                    .width(335.dp)
+                    .fillMaxWidth()
                     .height(152.dp),
                 shape = RoundedCornerShape(12.dp),
                 singleLine = false,
                 enabled = true
             )
-            Spacer(Modifier.height(143.dp))
+            Spacer(Modifier.weight(1f))
             Row(
                 modifier = modifier
                     .fillMaxWidth(),
@@ -167,9 +166,8 @@ buttnTXT: String
                 Text(modifier = modifier, fontWeight = FontWeight(500),fontSize = 17.sp,text = CostAll, color = Color.Black)}
 
             Spacer(Modifier.height(12.dp))
-            //navController.navigate(OrderPaidScreen)
             Button(
-               onClick = {  },
+               onClick = { navController.navigate(paymentScreen) },
                 enabled = telephone.isNotEmpty() and address.isNotEmpty(),
                 modifier = Modifier
                     .fillMaxWidth()
